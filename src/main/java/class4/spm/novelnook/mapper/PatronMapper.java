@@ -1,9 +1,8 @@
 package class4.spm.novelnook.mapper;
 
 
-import class4.spm.novelnook.pojo.User;
+import class4.spm.novelnook.pojo.Patron;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +13,8 @@ import java.util.List;
 public interface PatronMapper {
 
     // 获取所有patron信息
-    @Select("select * from user where userrole = 'patron'")
-    List<User> getAllPatrons();
-
+    @Select("select * from patron")
+    List<Patron> getAllPatrons();
 
 
 }

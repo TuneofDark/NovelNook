@@ -8,6 +8,9 @@ DROP TABLE IF EXISTS reservation;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS staff;
+DROP TABLE IF EXISTS patron;
+
+
 CREATE  TABLE IF NOT EXISTS staff(
   username varchar(255) PRIMARY KEY,
   password varchar(255),
@@ -17,6 +20,18 @@ CREATE  TABLE IF NOT EXISTS staff(
   telephone varchar(255),
   avatar varchar(255)
 );
+
+CREATE  TABLE IF NOT EXISTS patron(
+    userid VARCHAR(255) PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    firstname varchar(255),
+    lastname varchar(255),
+    email VARCHAR(255),
+    telephone varchar(255),
+    avatar varchar(255)
+);
+
 
 
 CREATE TABLE IF NOT EXISTS user(
@@ -125,3 +140,27 @@ INSERT IGNORE INTO reservation(userid,bookid,reservationtime,status)VALUES
                                                                         ('007','B001','2023-03-21','satisfied'),
                                                                         ('008','B007','2023-02-21','satisfied');
 
+
+
+INSERT INTO patron(userid, username, password, firstname, lastname, email, telephone, avatar)
+VALUES
+('patron1', 'johnsmith', 'password123', 'John', 'Smith', 'john.smith@example.com', '123-456-7890', 'avatar/1.jpg'),
+('patron2', 'janelee', 'password456', 'Jane', 'Lee', 'jane.lee@example.com', '456-789-0123', 'avatar/2.jpg'),
+('patron3', 'michaelchen', 'password789', 'Michael', 'Chen', 'michael.chen@example.com', '789-012-3456', 'avatar/3.jpg'),
+('patron4', 'sarahkim', 'password1234', 'Sarah', 'Kim', 'sarah.kim@example.com', '012-345-6789', 'avatar/4.jpg'),
+('patron5', 'davidlee', 'password5678', 'David', 'Lee', 'david.lee@example.com', '345-678-9012', 'avatar/5.jpg'),
+('patron6', 'annazhang', 'password9012', 'Anna', 'Zhang', 'anna.zhang@example.com', '678-901-2345', 'avatar/6.jpg'),
+('patron7', 'jameswang', 'password3456', 'James', 'Wang', 'james.wang@example.com', '901-234-5678', 'avatar/7.jpg'),
+('patron8', 'susanliu', 'password7890', 'Susan', 'Liu', 'susan.liu@example.com', '234-567-8901', 'avatar/8.jpg'),
+('patron9', 'peterwu', 'password2345', 'Peter', 'Wu', 'peter.wu@example.com', '567-890-1234', 'avatar/9.jpg'),
+('patron10', 'emilywang', 'password6789', 'Emily', 'Wang', 'emily.wang@example.com', '890-123-4567', 'avatar/10.jpg'),
+('patron11', 'stevenchen', 'password12345', 'Steven', 'Chen', 'steven.chen@example.com', '123-456-7890', 'avatar/11.jpg'),
+('patron12', 'graceyang', 'password67890', 'Grace', 'Yang', 'grace.yang@example.com', '456-789-0123', 'avatar/12.jpg'),
+('patron13', 'brianhu', 'password23456', 'Brian', 'Hu', 'brian.hu@example.com', '789-012-3456', 'avatar/13.jpg'),
+('patron14', 'julielin', 'password78901', 'Julie', 'Lin', 'julie.lin@example.com', '012-345-6789', 'avatar/14.jpg'),
+('patron15', 'oliverli', 'password123456', 'Oliver', 'Li', 'oliver.li@example.com', '345-678-9012', 'avatar/15.jpg'),
+('patron16', 'chriswang', 'password234567', 'Chris', 'Wang', 'chris.wang@example.com', '678-901-2345', 'avatar/16.jpg'),
+('patron17', 'monicazhou', 'password890123', 'Monica', 'Zhou', 'monica.zhou@example.com', '901-234-5678', 'avatar/17.jpg'),
+('patron18', 'kevinli', 'password2345678', 'Kevin', 'Li', 'kevin.li@example.com', '234-567-8901', 'avatar/18.jpg'),
+('patron19', 'hannahwang', 'password6789012', 'Hannah', 'Wang', 'hannah.wang@example.com', '567-890-1234', 'avatar/19.jpg'),
+('patron20', 'ryanlee', 'password1234567', 'Ryan', 'Lee', 'ryan.lee@example.com', '890-123-4567', 'avatar/20.jpg');
