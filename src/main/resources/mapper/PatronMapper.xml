@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="class4.spm.novelnook.mapper.PatronMapper">
+
+    <select id="searchForBook" resultType="class4.spm.novelnook.pojo.Book">
+        select * from novelnook.book
+                <where>
+                <if test="title != null">
+                    bookname like #{title}
+                </if>
+                 <if test="author != null">
+                     and author = #{author}
+                 </if>
+                <if test="catagory != null">
+                    and catagory = #{catagory}
+                </if>
+
+                </where>
+    </select>
+</mapper>
