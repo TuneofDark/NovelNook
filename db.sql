@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS book(
                                    introduction TEXT
 );
 CREATE TABLE IF NOT EXISTS borrow(
+                                     borrowid VARCHAR(255),
                                      userid VARCHAR(255),
                                      bookid VARCHAR(255),
                                      borrowtime DATE,
@@ -61,17 +62,18 @@ CREATE TABLE IF NOT EXISTS borrow(
                                      status ENUM('returned','borrowing'),
                                      FOREIGN KEY(userid) REFERENCES user(userid) ON UPDATE CASCADE ON DELETE CASCADE ,
                                      FOREIGN KEY(bookid) REFERENCES book(bookid) ON UPDATE CASCADE ON DELETE CASCADE ,
-                                     PRIMARY KEY (userid,bookid)
+                                     PRIMARY KEY (borrowid)
 );
 
 CREATE TABLE IF NOT EXISTS reservation(
+                                          reservationid VARCHAR(255),
                                           userid VARCHAR(255),
                                           bookid VARCHAR(255),
                                           reservationtime DATE,
                                           status ENUM('cancled','waiting','satisfied'),
                                           FOREIGN KEY(userid) REFERENCES user(userid) ON UPDATE CASCADE ON DELETE CASCADE ,
                                           FOREIGN KEY(bookid) REFERENCES book(bookid) ON UPDATE CASCADE ON DELETE CASCADE ,
-                                          PRIMARY KEY (userid,bookid)
+                                          PRIMARY KEY (reservationid)
 );
 
 
@@ -117,28 +119,28 @@ INSERT IGNORE INTO book (bookid, bookname, press, author, publishtime, catagory,
                                                                                                           ('B013', 'The Hunger Games', 'Scholastic Corporation', 'Suzanne Collins', '2008', 'Young Adult Fiction', 6, 'A dystopian adventure novel about a teenage girl who fights to survive in a deadly game.'),
                                                                                                           ('B014', 'The Fault in Our Stars', 'Dutton Books', 'John Green', '2012', 'Young Adult Fiction', 5, 'A heart-wrenching story about two teenagers with terminal illnesses who fall in love.');
 
-INSERT IGNORE INTO borrow(userid,bookid,borrowtime,deadline,status)VALUES
-                                                                       ('007','B001','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('007','B002','2022-03-21','2022-4-21','returned'),
-                                                                       ('007','B003','2022-03-21','2024-4-21','returned'),
-                                                                       ('007','B004','2023-02-21','2023-3-21','borrowing'),
-                                                                       ('007','B005','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('007','B006','2023-03-21','2023-4-21','returned'),
-                                                                       ('007','B007','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('007','B008','2023-03-21','2023-4-21','borrowing'),
+INSERT IGNORE INTO borrow(borrowid,userid,bookid,borrowtime,deadline,status)VALUES
+                                                                       ('BO001','007','B001','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO002','007','B002','2022-03-21','2022-4-21','returned'),
+                                                                       ('BO003','007','B003','2022-03-21','2024-4-21','returned'),
+                                                                       ('BO004','007','B004','2023-02-21','2023-3-21','borrowing'),
+                                                                       ('BO005','007','B005','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO006','007','B006','2023-03-21','2023-4-21','returned'),
+                                                                       ('BO007','007','B007','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO008','007','B008','2023-03-21','2023-4-21','borrowing'),
 
-                                                                       ('008','B009','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('008','B0012','2022-03-21','2022-4-21','returned'),
-                                                                       ('008','B0011','2022-03-21','2024-4-21','returned'),
-                                                                       ('008','B0010','2023-02-21','2023-3-21','borrowing'),
-                                                                       ('008','B005','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('008','B006','2023-03-21','2023-4-21','returned'),
-                                                                       ('008','B007','2023-03-21','2023-4-21','borrowing'),
-                                                                       ('008','B008','2023-03-21','2023-4-21','borrowing');
+                                                                       ('BO009','008','B009','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO010','008','B0012','2022-03-21','2022-4-21','returned'),
+                                                                       ('BO011','008','B0011','2022-03-21','2024-4-21','returned'),
+                                                                       ('BO012','008','B0010','2023-02-21','2023-3-21','borrowing'),
+                                                                       ('BO013','008','B005','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO014','008','B006','2023-03-21','2023-4-21','returned'),
+                                                                       ('BO015','008','B007','2023-03-21','2023-4-21','borrowing'),
+                                                                       ('BO016','008','B008','2023-03-21','2023-4-21','borrowing');
 
-INSERT IGNORE INTO reservation(userid,bookid,reservationtime,status)VALUES
-                                                                        ('007','B001','2023-03-21','satisfied'),
-                                                                        ('008','B007','2023-02-21','satisfied');
+INSERT IGNORE INTO reservation(reservationid,userid,bookid,reservationtime,status)VALUES
+                                                                        ('RES001','007','B001','2023-03-21','satisfied'),
+                                                                        ('RES002','008','B007','2023-02-21','satisfied');
 
 
 

@@ -1,11 +1,20 @@
 # NovelNook
 
-## 2023.4.13
-Staff组使用patron表、book表、borrow表  
-为目前所有表建立实体类  
-Staff组在线文档[Staff组](https://docs.qq.com/doc/DR2d1aFh6RWJaalVs)
+## 2023.4.16
 
+数据库设计改动：borrow表和reservation表设计有改动，详情如下
 
+1. borrow表新增borrowid作为主码，不再使用userid, bookid作为主码
+
+```
+borrow(borrowid,userid,bookid,borrowtime,deadline,status)
+```
+
+2. reservations表新增reservationsid作为主码，不再使用userid, bookid作为主码
+
+```
+reservation(reservationid,userid,bookid,reservationtime,status)
+```
 
 ## 2023.4.11
 
