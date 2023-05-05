@@ -3,11 +3,11 @@ package class4.spm.novelnook.service;
 import class4.spm.novelnook.mapper.PatronMapper;
 import class4.spm.novelnook.pojo.Book;
 import class4.spm.novelnook.pojo.Borrow;
-import class4.spm.novelnook.pojo.Patron;
-import org.apache.ibatis.jdbc.Null;
+import class4.spm.novelnook.pojo.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -67,4 +67,14 @@ public class PatronServiceImpl implements PatronService{
         return c.getTime();
     }
 
+    public int reserveBook(String userid,String bookid,Date reservationtime){
+//        if(patronMapper.checkBookRemain(bookid)>0)
+//            return 0;
+        if((reservationtime.compareTo( new Date(System.currentTimeMillis())))>=0){
+            Reservation reservation = new Reservation(userid, bookid,  reservationtime, "satisfied");
+            return patronMapper.reserveBook(reservation);
+        }
+        return -1;
+
+    }
 }

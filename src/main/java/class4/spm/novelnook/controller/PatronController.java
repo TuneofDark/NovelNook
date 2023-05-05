@@ -8,6 +8,7 @@ import class4.spm.novelnook.service.PatronServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -51,6 +52,12 @@ public class PatronController {
     @GetMapping("/{userid}/{bookid}")
     public String updateBorrow(@PathVariable("userid") String userid, @PathVariable("bookid") String bookid) {
         return patronServiceImpl.updateBorrow(userid, bookid);
+    }
+
+    @GetMapping("/{userid}/{bookid}/{reservationtime}")
+    public int reserveBook(@PathVariable("userid") String userid , @PathVariable("bookid") String bookid, @PathVariable("reservationtime")Date reservationtime){
+        System.out.println(userid);
+        return patronServiceImpl.reserveBook(userid,bookid,reservationtime);
     }
 
 

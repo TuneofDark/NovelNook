@@ -5,6 +5,7 @@ import class4.spm.novelnook.pojo.Borrow;
 import class4.spm.novelnook.pojo.Patron;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,4 +20,6 @@ public interface PatronService {
     int updateBook(String bookid);
 
     String updateBorrow(String userid,String bookid);
+
+    int reserveBook(String userid, String bookName, Date reservationtime);
 }

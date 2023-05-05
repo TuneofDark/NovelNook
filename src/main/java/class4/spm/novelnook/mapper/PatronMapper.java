@@ -4,9 +4,11 @@ package class4.spm.novelnook.mapper;
 import class4.spm.novelnook.pojo.Book;
 import class4.spm.novelnook.pojo.Borrow;
 import class4.spm.novelnook.pojo.Patron;
+import class4.spm.novelnook.pojo.Reservation;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -37,5 +39,10 @@ public interface PatronMapper {
     @Insert("insert into borrow(userid, bookid, borrowtime, deadline, status)"+
             "values(#{userid}, #{bookid}, #{borrowtime}, #{deadline}, #{status})")
     int addBorrow(Borrow borrow);
+
+    @Insert("insert into reservation(userid, bookid, reservationtime, status)"+
+    "values(#{userid}, #{bookid}, #{reservationtime},#{status})")
+    int reserveBook(Reservation reservation);
+
 
 }
